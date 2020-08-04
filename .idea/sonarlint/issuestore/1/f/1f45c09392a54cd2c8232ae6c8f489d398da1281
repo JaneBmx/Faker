@@ -1,16 +1,0 @@
-
-T
-java:S1128	"2Remove this unused import 'java.util.Collections'.(¢³ïÓşÿÿÿÿ8Âöå».
-K
-java:S1128")Remove this unused import 'entity.Phone'.(ËÙŞîÿÿÿÿÿ8‡“ßŸ».
-C
-java:S1172"&Remove these unused method parameters.(ê¬ˆ±8½½ßŸ».
-H
-java:S1168"+Return an empty collection instead of null.(¥¹ï8½½ßŸ».
-L
-java:S3740"/Provide the parametrized type for this generic.(ê¬ˆ±8õ¸Ô».
-J
-java:S1128"(Remove this unused import 'entity.Name'.(·÷ğ¼úÿÿÿÿ8‡“ßŸ».
-X	java:S125"<This block of commented-out lines of code should be removed.(ÕÁÛÓ8ıåÃŸ».
-M
-java:S1128"+Remove this unused import 'entity.Address'.(èÔëÕÿÿÿÿÿ8‡“ßŸ».
