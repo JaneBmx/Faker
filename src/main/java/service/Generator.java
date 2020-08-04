@@ -1,6 +1,7 @@
 package service;
 
 import com.github.javafaker.Faker;
+import entity.Note;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,11 @@ public class Generator {
         this.countOfFakes = countOfFakes;
     }
 
-    public List<String> generate(){
+    public List<Note> generate(){
+        List<Note> list = new ArrayList<>();
+
+
+
         //mb use multithreading?
         return new ArrayList<>();
     }

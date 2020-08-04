@@ -1,9 +1,11 @@
 package service;
 
+import entity.Note;
+
 import java.util.List;
 
 public class Mistaker {
-    public void makeMistakes(List<String> list,double mistakePercent){
+    public void makeMistakes(List<Note> list, double mistakePercent){
         //hmmm
 
     }

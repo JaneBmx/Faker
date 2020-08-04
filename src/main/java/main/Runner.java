@@ -1,6 +1,7 @@
 package main;
 
 import com.github.javafaker.Faker;
+import entity.Note;
 import service.Generator;
 import service.Mistaker;
 import util.validator.ArgumentsValidator;
@@ -20,12 +21,12 @@ public class Runner {
             Locale locale = new Locale(args[0]);
             Faker faker = new Faker(locale);
 
-            List<String> stringList = new Generator(faker, Integer.parseInt(args[1])).generate();
+            List<Note> stringList = new Generator(faker, Integer.parseInt(args[1])).generate();
             new Mistaker().makeMistakes(stringList,
                     args.length == 3 ? Double.parseDouble(args[2]) : 0
             );
 
-            for (String s : stringList) System.out.println(s);
+            for (Note s : stringList) System.out.println(s);
         }
         System.out.println("Invalid arguments");
     }
