@@ -1,4 +1,4 @@
-package util.validator;
+package by.vlasova.util.validator;
 
 import java.util.HashSet;
 import java.util.Set;

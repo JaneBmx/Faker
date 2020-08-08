@@ -1,4 +1,4 @@
-package util;
+package by.vlasova.util;
 
 public enum Locale {
     RU("ru_RU"),
