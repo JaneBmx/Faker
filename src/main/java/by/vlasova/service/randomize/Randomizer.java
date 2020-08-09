@@ -1,4 +1,5 @@
 package by.vlasova.service.randomize;
 
-public interface Randomizer {
+public interface Randomizer<T> {
+    T randomize();
 }
