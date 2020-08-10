@@ -10,19 +10,17 @@ public abstract class AbstractFakeRandomizer {
     protected final Faker faker;
     protected final Random rnd = new Random();
     protected final String locale;
-    protected final double errorRate;
+    protected final double errRate;
 
-    protected AbstractFakeRandomizer(String locale, double errorRate) {
+    protected AbstractFakeRandomizer(String locale, double errRate) {
         this.locale = locale;
-        this.errorRate = errorRate;
+        this.errRate = errRate;
         faker = new Faker(new Locale(locale));
     }
 
-    protected String implementTypo(String to, double errorRate) {
-        if (rnd.nextDouble() <= errorRate % 1)
-            to = RandomTypoServiceExecutor.generateTypo(to, locale);
-        for (int i = 0; i < (int) errorRate; i++)
-            to = RandomTypoServiceExecutor.generateTypo(to, locale);
+    protected String implementTypo(String to, double errRate) {
+        if (rnd.nextDouble() <= errRate % 1) to = RandomTypoServiceExecutor.generateTypo(to, locale);
+        for (int i = 0; i < (int) errRate; i++) to = RandomTypoServiceExecutor.generateTypo(to, locale);
         return to;
     }
 }

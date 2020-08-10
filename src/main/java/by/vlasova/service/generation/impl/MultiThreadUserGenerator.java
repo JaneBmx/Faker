@@ -1,7 +1,7 @@
-package by.vlasova.service.generator.impl;
+package by.vlasova.service.generation.impl;
 
 import by.vlasova.entity.User;
-import by.vlasova.service.generator.Generator;
+import by.vlasova.service.generation.Generator;
 import by.vlasova.service.randomize.Randomizer;
 
 import java.util.Arrays;
