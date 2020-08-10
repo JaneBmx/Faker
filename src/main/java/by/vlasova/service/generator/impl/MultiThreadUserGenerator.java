@@ -4,23 +4,45 @@ import by.vlasova.entity.User;
 import by.vlasova.service.generator.Generator;
 import by.vlasova.service.randomize.Randomizer;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.*;
 
 public class MultiThreadUserGenerator implements Generator {
-    private final Randomizer<User> randomizer;
+    private final int BUNCH_SIZE = 100_000;
+    private final Callable<User> task;
+    private final ExecutorService executorService = Executors.newFixedThreadPool
+            (Runtime.getRuntime().availableProcessors());
 
     public MultiThreadUserGenerator(Randomizer<User> randomizer) {
-        this.randomizer = randomizer;
+        task = randomizer::randomize;
     }
 
     @Override
     public void generate(int value) {
-        List<CompletableFuture<User>> list = new ArrayList<>(value);
-        for (int i = 0; i < value; i++) {
-            list.add(CompletableFuture.supplyAsync(randomizer::randomize));
+        while (value > 0) {
+            if (value >= BUNCH_SIZE) doGen(BUNCH_SIZE);
+            else doGen(value % BUNCH_SIZE);
+            value -= BUNCH_SIZE;
         }
-        list.parallelStream().forEach(e -> System.out.println(e.join()));
+        executorService.shutdown();
+    }
+
+    private void doGen(int value) {
+        Callable<User>[] tasks = new Callable[value];
+        Arrays.fill(tasks, task);
+        List<Future<User>> list;
+        try {
+            list = executorService.invokeAll(Arrays.asList(tasks));
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        list.parallelStream().forEach(f -> {
+            try {
+                System.out.println(f.get());
+            } catch (InterruptedException | ExecutionException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 }
