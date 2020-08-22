@@ -5,12 +5,6 @@ import by.vlasova.service.generation.impl.MultiThreadUserGenerator;
 import by.vlasova.service.randomize.impl.UserRandomizer;
 import by.vlasova.util.validation.ArgumentValidator;
 
-/**
- * Args:
- * 1. Locale name:{ru_RU, en_EN, by_BY}
- * 2. Count of records:{1, 2, 3, ...}
- * 3. Percent of mistakes:{0<....}
- */
 public class Runner {
     public static void main(String[] args) {
         if (!ArgumentValidator.argsValidator(args)) return;
